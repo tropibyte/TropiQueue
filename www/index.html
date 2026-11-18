@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- TropiQueue - AMQP 0-9-1 message broker
+     Copyright (c) Tropibyte, Inc. Licensed under the MIT License. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TropiQueue Management</title>
+  <link rel="icon" href="/ui/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/ui/style.css">
+</head>
+<body>
+  <div id="login" class="login hidden">
+    <form id="login-form" class="card login-card" autocomplete="on">
+      <img src="/ui/logo.svg" alt="" class="login-logo">
+      <h1>TropiQueue</h1>
+      <p class="muted">Sign in with a management user or an access token.</p>
+      <label>User name
+        <input id="login-user" name="username" autocomplete="username" required>
+      </label>
+      <label>Password or token
+        <input id="login-pass" name="password" type="password" autocomplete="current-password" required>
+      </label>
+      <div class="login-actions">
+        <button type="submit" class="primary">Sign in</button>
+      </div>
+      <p id="login-error" class="error hidden"></p>
+    </form>
+  </div>
+
+  <div id="app" class="hidden">
+    <header class="topbar">
+      <div class="brand">
+        <img src="/ui/logo.svg" alt="" class="brand-logo">
+        <span class="brand-name">TropiQueue</span>
+        <span id="cluster-name" class="badge"></span>
+      </div>
+      <nav id="nav" class="nav">
+        <a href="#/overview" data-view="overview">Overview</a>
+        <a href="#/connections" data-view="connections">Connections</a>
+        <a href="#/channels" data-view="channels">Channels</a>
+        <a href="#/exchanges" data-view="exchanges">Exchanges</a>
+        <a href="#/queues" data-view="queues">Queues and Streams</a>
+        <a href="#/admin" data-view="admin">Admin</a>
+      </nav>
+      <div class="session">
+        <span>vhost</span>
+        <select id="vhost-select" aria-label="Virtual host"></select>
+        <span id="whoami" class="muted"></span>
+        <button id="logout" class="link">Log out</button>
+      </div>
+    </header>
+
+    <div id="alarm-banner" class="banner hidden"></div>
+
+    <main id="main" class="main">
+      <p class="muted">Loading&hellip;</p>
+    </main>
+
+    <footer class="footer">
+      <span id="version"></span>
+      <span class="muted">Refreshing every <select id="refresh-interval" aria-label="Refresh interval">
+        <option value="0">never</option>
+        <option value="5000" selected>5 seconds</option>
+        <option value="10000">10 seconds</option>
+        <option value="30000">30 seconds</option>
+      </select></span>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+
+  <script src="/ui/api.js"></script>
+  <script src="/ui/views.js"></script>
+  <script src="/ui/app.js"></script>
+</body>
+</html>

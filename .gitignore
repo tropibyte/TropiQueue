@@ -1,0 +1,20 @@
+# Build output
+/build/
+/build-*/
+/out/
+cmake-build-*/
+CMakeUserPresets.json
+compile_commands.json
+
+# Broker data written by local runs
+/data/
+*.pid
+*.log
+
+# Editors and IDEs
+.vs/
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
